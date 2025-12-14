@@ -6,6 +6,12 @@ import LandingPage from "./pages/LandingPage";
 import WeeklyAnalytics from "./pages/WeeklyAnalytics";
 import Register from "./pages/Register";
 
+import About from "./pages/company/About";
+import Blog from "./pages/company/Blog";
+import BlogDetail from "./pages/company/BlogDetail";
+import Careers from "./pages/company/Careers";
+import Contact from "./pages/company/Contact";
+
 function App() {
   return (
     <Routes>
@@ -23,6 +29,12 @@ function App() {
       />
       <Route path="/dashboard/analytics" element={<WeeklyAnalytics />} />
 
+      <Route path="/about" element={<About />} />
+      <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/:id" element={<BlogDetail />} />
+      <Route path="/careers" element={<Careers />} />
+      <Route path="/contact" element={<Contact />} />
+      
     </Routes>
   );
 }
