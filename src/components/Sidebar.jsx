@@ -23,10 +23,10 @@ function Sidebar({ collapsed, setCollapsed }) {
 
   const menuItems = [
     { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
-    { name: "Mood Tracker", path: "/analytics", icon: BarChart3 },
     { name: "Habits", path: "/habits", icon: CheckCircle },
     { name: "Journal", path: "/journal", icon: BookOpen },
     { name: "Activity Log", path: "/activity", icon: Activity },
+    { name: "Mood Tracker", path: "/analytics", icon: BarChart3 },
     { name: "Appointments", path: "/appointments", icon: Calendar },
   ];
 
