@@ -6,13 +6,12 @@ import Stats from "../components/Stats";
 
 export default function LandingPage() {
   return (
-       <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors">
+    <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors">
       <Navbar />
       <Hero />
       <Features />
       <Stats />
       <Footer />
     </div>
-
   );
 }
