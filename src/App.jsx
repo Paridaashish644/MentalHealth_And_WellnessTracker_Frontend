@@ -5,6 +5,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import LandingPage from "./pages/LandingPage";
 import WeeklyAnalytics from "./pages/WeeklyAnalytics";
 import Register from "./pages/Register";
+import Layout from "./components/Layout";
 
 import About from "./pages/company/About";
 import Blog from "./pages/company/Blog";
@@ -17,24 +18,23 @@ function App() {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-
+      <Route path="/register" element={<Register />} />
       <Route
-        path="/dashboard"
         element={
           <ProtectedRoute>
-            <Dashboard />
+            <Layout />
           </ProtectedRoute>
         }
-      />
-      <Route path="/dashboard/analytics" element={<WeeklyAnalytics />} />
+      >
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/analytics" element={<WeeklyAnalytics />} />
+      </Route>
 
       <Route path="/about" element={<About />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:id" element={<BlogDetail />} />
       <Route path="/careers" element={<Careers />} />
       <Route path="/contact" element={<Contact />} />
-      
     </Routes>
   );
 }

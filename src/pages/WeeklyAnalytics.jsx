@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Sidebar from "../components/SideBar";
 import { getAllMoods } from "../api/moodApi";
 import {
   BarChart,
@@ -90,69 +89,66 @@ function WeeklyAnalytics() {
   };
 
   return (
-    <div className="flex min-h-screen bg-slate-100 dark:bg-slate-900">
-      <Sidebar />
-      <div className="flex-1 p-8">
-        <h1 className="text-3xl font-bold text-slate-800 dark:text-white mb-6">
-          Weekly Mood Analytics 📊
-        </h1>
+    <div className="p-8">
+      <h1 className="text-3xl font-bold text-slate-800 dark:text-white mb-6">
+        Weekly Mood Analytics 📊
+      </h1>
 
-        {/* Bar Chart */}
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow mb-8">
-          {weeklyStats.length === 0 ? (
-            <p className="text-slate-500">No data for last 7 days</p>
-          ) : (
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart
-                data={weeklyStats}
-                margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="mood" />
-                <YAxis allowDecimals={false} />
-                <Tooltip />
-                <Bar dataKey="count" fill="#8b5cf6" />
-              </BarChart>
-            </ResponsiveContainer>
-          )}
-        </div>
+      {/* Bar Chart */}
+      <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow mb-8">
+        {weeklyStats.length === 0 ? (
+          <p className="text-slate-500">No data for last 7 days</p>
+        ) : (
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart
+              data={weeklyStats}
+              margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="mood" />
+              <YAxis allowDecimals={false} />
+              <Tooltip />
+              <Bar dataKey="count" fill="#8b5cf6" />
+            </BarChart>
+          </ResponsiveContainer>
+        )}
+      </div>
 
-        {/* 7-Day Calendar */}
-        <h2 className="text-2xl font-semibold text-slate-800 dark:text-white mb-4">
-          Last 7 Days Mood Calendar 📅
-        </h2>
-        <div className="grid grid-cols-7 gap-4 mb-6">
-          {last7Days.map((date) => {
-            const mood = getMoodForDate(date);
-            const bgColor = mood ? moodColors[mood] : "#cbd5e1"; // slate gray fallback
+      {/* 7-Day Calendar */}
+      <h2 className="text-2xl font-semibold text-slate-800 dark:text-white mb-4">
+        Last 7 Days Mood Calendar 📅
+      </h2>
+      <div className="grid grid-cols-7 gap-4 mb-6">
+        {last7Days.map((date) => {
+          const mood = getMoodForDate(date);
+          const bgColor = mood ? moodColors[mood] : "#cbd5e1"; // slate gray fallback
 
-            return (
-              <div
-                key={date.toDateString()}
-                className="h-20 flex flex-col items-center justify-center rounded-xl text-white"
-                style={{ backgroundColor: mood ? bgColor : undefined }}
-              >
-                <span className="text-sm text-slate-800 dark:text-white mb-1">
-                  {date.toLocaleDateString("en-US", { weekday: "short" })}
-                </span>
-                {mood && <span className="text-xl">{mood}</span>}
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Legend */}
-        <div className="flex gap-4 flex-wrap">
-          {Object.entries(moodColors).map(([mood, color]) => (
-            <div key={mood} className="flex items-center gap-2">
-              <div
-                style={{ backgroundColor: color }}
-                className="w-5 h-5 rounded-full"
-              />
-              <span className="text-slate-700 dark:text-slate-300">{mood}</span>
+          return (
+            <div
+              key={date.toDateString()}
+              className="h-20 flex flex-col items-center justify-center rounded-xl text-white"
+              style={{ backgroundColor: mood ? bgColor : undefined }}
+            >
+              <span className="text-sm text-slate-800 dark:text-white mb-1">
+                {date.toLocaleDateString("en-US", { weekday: "short" })}
+              </span>
+              {mood && <span className="text-xl">{mood}</span>}
             </div>
-          ))}
-        </div>
+          );
+        })}
+      </div>
+
+      {/* Legend */}
+      <div className="flex gap-4 flex-wrap">
+        {Object.entries(moodColors).map(([mood, color]) => (
+          <div key={mood} className="flex items-center gap-2">
+            <div
+              style={{ backgroundColor: color }}
+              className="w-5 h-5 rounded-full"
+            />
+            <span className="text-slate-700 dark:text-slate-300">{mood}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -1,44 +1,87 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import {
+  LayoutDashboard,
+  BarChart3,
+  CheckCircle,
+  BookOpen,
+  Activity,
+  Calendar,
+  LogOut,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
-function Sidebar() {
+function Sidebar({ collapsed, setCollapsed }) {
   const navigate = useNavigate();
 
   const logout = () => {
     localStorage.clear();
+    toast.success("Logged out successfully!");
     navigate("/login");
   };
 
-  return (
-    <div className="w-64 min-h-screen bg-slate-900 text-white p-6">
-      <h2 className="text-2xl font-bold mb-8">MHWT 🧠</h2>
+  const menuItems = [
+    { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
+    { name: "Habits", path: "/habits", icon: CheckCircle },
+    { name: "Journal", path: "/journal", icon: BookOpen },
+    { name: "Activity Log", path: "/activity", icon: Activity },
+    { name: "Mood Tracker", path: "/analytics", icon: BarChart3 },
+    { name: "Appointments", path: "/appointments", icon: Calendar },
+  ];
 
-      <nav className="space-y-4">
-        <Link to="/dashboard" className="block hover:text-violet-400">
-          Dashboard
-        </Link>
-        <Link to="/dashboard/analytics" className="block hover:text-violet-400">
-          Mood Tracker
-        </Link>
-        <Link to="/habits" className="block hover:text-violet-400">
-          Habits
-        </Link>
-        <Link to="/journal" className="block hover:text-violet-400">
-          Journal
-        </Link>
-        <Link to="/activity" className="block hover:text-violet-400">
-          Activity Log
-        </Link>
-        <Link to="/appointments" className="block hover:text-violet-400">
-          Appointments
-        </Link>
+  return (
+    <div
+      className={`${
+        collapsed ? "w-20" : "w-64"
+      } h-screen bg-slate-900 text-slate-100 flex flex-col transition-all duration-300`}
+    >
+      <div className="flex items-center justify-between p-4">
+        {!collapsed && (
+          <h2 className="text-xl font-extrabold tracking-wide">
+            MHWT <span className="text-violet-400">🧠</span>
+          </h2>
+        )}
 
         <button
-          onClick={logout}
-          className="mt-6 text-red-400 hover:text-red-500"
+          onClick={() => setCollapsed((prev) => !prev)}
+          className="p-2 rounded-lg hover:bg-slate-800 transition"
         >
-          Logout
+          {collapsed ? <ChevronRight /> : <ChevronLeft />}
         </button>
+      </div>
+
+      <nav className="flex-1 px-3 space-y-2 mt-4">
+        {menuItems.map((item) => {
+          const Icon = item.icon;
+          return (
+            <NavLink
+              key={item.name}
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-3 py-2 rounded-xl transition-all
+                 ${
+                   isActive
+                     ? "bg-violet-600 text-white shadow-md"
+                     : "hover:bg-slate-800 text-slate-300"
+                 }`
+              }
+            >
+              <Icon size={22} />
+              {!collapsed && <span className="font-medium">{item.name}</span>}
+            </NavLink>
+          );
+        })}
       </nav>
+      <div className="p-1.5 border-t border-slate-800">
+        <button
+          onClick={logout}
+          className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-red-400 hover:bg-red-500/10 hover:text-red-500 transition"
+        >
+          <LogOut size={22} />
+          {!collapsed && <span className="font-medium">Logout</span>}
+        </button>
+      </div>
     </div>
   );
 }
