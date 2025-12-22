@@ -13,6 +13,12 @@ import BlogDetail from "./pages/company/BlogDetail";
 import Careers from "./pages/company/Careers";
 import Contact from "./pages/company/Contact";
 
+import Features from "./pages/product/Features";
+import Pricing from "./pages/product/Pricing";
+import Download from "./pages/product/Download";
+import Updates from "./pages/product/Updates";
+
+
 function App() {
   return (
     <Routes>
@@ -35,6 +41,12 @@ function App() {
       <Route path="/blog/:id" element={<BlogDetail />} />
       <Route path="/careers" element={<Careers />} />
       <Route path="/contact" element={<Contact />} />
+
+      <Route path="/features" element={<Features />} />
+      <Route path="/pricing" element={<Pricing />} />
+      <Route path="/download" element={<Download />} />
+      <Route path="/updates" element={<Updates />} />
+
     </Routes>
   );
 }

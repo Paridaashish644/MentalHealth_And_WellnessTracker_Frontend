@@ -19,11 +19,11 @@ function Footer() {
           
           <div>
             <h4 className="font-semibold text-white mb-4">Product</h4>
-            <div className="space-y-2 text-sm text-slate-400">
-              <div className="hover:text-white transition cursor-pointer">Features</div>
-              <div className="hover:text-white transition cursor-pointer">Pricing</div>
-              <div className="hover:text-white transition cursor-pointer">Download</div>
-              <div className="hover:text-white transition cursor-pointer">Updates</div>
+            <div className="space-y-2 text-sm text-slate-400 flex flex-col">
+              <Link to="/features" className="hover:text-white transition">Features</Link>
+              <Link to="/pricing" className="hover:text-white transition">Pricing</Link>
+              <Link to="/download" className="hover:text-white transition">Download</Link>
+              <Link to="/updates" className="hover:text-white transition">Updates</Link>
             </div>
           </div>
           
