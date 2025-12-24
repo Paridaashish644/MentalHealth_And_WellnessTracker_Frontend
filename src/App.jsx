@@ -18,6 +18,11 @@ import Pricing from "./pages/product/Pricing";
 import Download from "./pages/product/Download";
 import Updates from "./pages/product/Updates";
 
+import Privacy from "./pages/legal/Privacy";
+import Terms from "./pages/legal/Terms";
+import Security from "./pages/legal/Security";
+import Cookies from "./pages/legal/Cookies";
+
 
 function App() {
   return (
@@ -46,6 +51,13 @@ function App() {
       <Route path="/pricing" element={<Pricing />} />
       <Route path="/download" element={<Download />} />
       <Route path="/updates" element={<Updates />} />
+
+      <Route path="/privacy" element={<Privacy />} />
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/security" element={<Security />} />
+      <Route path="/cookies" element={<Cookies />} />
+
+
 
     </Routes>
   );

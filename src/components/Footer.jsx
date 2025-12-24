@@ -39,12 +39,12 @@ function Footer() {
           </div>
           
           <div>
-            <h4 className="font-semibold text-white mb-4">Legal</h4>
-            <div className="space-y-2 text-sm text-slate-400">
-              <div className="hover:text-white transition cursor-pointer">Privacy</div>
-              <div className="hover:text-white transition cursor-pointer">Terms</div>
-              <div className="hover:text-white transition cursor-pointer">Security</div>
-              <div className="hover:text-white transition cursor-pointer">Cookies</div>
+           <h4 className="font-semibold text-white mb-4">Legal</h4>
+             <div className="space-y-2 text-sm text-slate-400 flex flex-col">
+              <Link to="/privacy" className="hover:text-white transition">Privacy</Link>
+              <Link to="/terms" className="hover:text-white transition">Terms</Link>
+              <Link to="/security" className="hover:text-white transition">Security</Link>
+              <Link to="/cookies" className="hover:text-white transition">Cookies</Link>
             </div>
           </div>
         </div>
