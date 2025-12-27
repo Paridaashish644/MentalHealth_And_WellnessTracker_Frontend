@@ -32,30 +32,36 @@ function Navbar() {
         </div>
 
         <div className="hidden md:flex gap-8 text-sm font-medium">
-          <a
+          {/* <a
             href="#"
-            className="text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition"
-          >
-            Features
-          </a>
-          <a
+            
+          > */}
+          <Link to="/features" className="text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition">Features</Link>
+            {/* Features */}
+          {/* </a> */}
+          {/* <a
             href="#"
             className="text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition"
           >
             How It Works
-          </a>
-          <a
+          </a> */}
+                    <Link to="/howitworks" className="text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition">How It Works</Link>
+
+          {/* <a
             href="#"
             className="text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition"
           >
             Testimonials
-          </a>
-          <a
+          </a> */}
+          <Link to="/testimonials" className="text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition">Testimonials</Link>
+
+          {/* <a
             href="#"
             className="text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition"
           >
             Pricing
-          </a>
+          </a> */}
+           <Link to="/pricing" className="text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition">Pricing</Link>
         </div>
 
         <div className="flex items-center gap-3">

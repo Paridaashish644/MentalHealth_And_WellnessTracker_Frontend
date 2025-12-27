@@ -18,6 +18,11 @@ import Pricing from "./pages/product/Pricing";
 import Download from "./pages/product/Download";
 import Updates from "./pages/product/Updates";
 
+import Testimonials from "./pages/navbarOption/Testimonials";
+
+import HowItWorks from "./pages/navbarOption/howItWorks";
+
+
 
 function App() {
   return (
@@ -47,6 +52,8 @@ function App() {
       <Route path="/download" element={<Download />} />
       <Route path="/updates" element={<Updates />} />
 
+      <Route path="/testimonials" element={<Testimonials/>} />
+      <Route path="/howitworks" element={<HowItWorks/>}/>
     </Routes>
   );
 }
